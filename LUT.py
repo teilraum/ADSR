@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 plotStuff = False
 
 
-time = 32            # resolution in Time
+time = 128            # resolution in Time
 curves = 64         # number of curves
 maxExp = 1.5        # steepnes of the max curve
 B = 4095            # max Val
@@ -31,7 +31,7 @@ f.write(f"const int MAX={B};\n")
 f.write(f"const int TIME={time};\n")
 f.write(f"const int CURVES={curves};\n")
 
-f.write(f"const uint16_t LUT[{curves}][{time}] = ")
+f.write(f"static const PROGMEM uint16_t LUT[{curves}][{time}] = ")
 f.write("{")
 colPos = 0
 for row in LUT:
