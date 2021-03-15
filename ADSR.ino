@@ -3,6 +3,7 @@
 // a simple ADSR for the Arduino
 #include <stdint.h>
 
+#include "avr/pgmspace.h"
 #include "LUT.h"
 
 // #############################################################
@@ -50,6 +51,7 @@ void tfr_byte(byte data)
 
 // CONTROL SIGNALS
 int CV_curve = 0, CV_curve0 = 0;
+const int CV_curve_shift = 10 - int(log(CURVES) / log(2));
 int CV_subSteps = 0;
 
 void setup()
@@ -65,6 +67,7 @@ void setup()
   Serial.begin(9600);
 }
 
+bool firstLoop = true;
 void loop()
 {
   Set_DAC_4921(0);
@@ -74,7 +77,9 @@ void loop()
 
   risingPhase();
   fallingPhase(MAX, 2048, CV_curve0, CV_subSteps);
-  fallingPhase(2048,0,CV_curve0,CV_subSteps);
+  fallingPhase(2048, 0, CV_curve0, CV_subSteps);
+
+  firstLoop = false;
 }
 
 uint32_t interp(uint32_t val0, uint32_t val1, uint32_t position, uint32_t distance)
@@ -86,50 +91,59 @@ uint32_t interp(uint32_t val0, uint32_t val1, uint32_t position, uint32_t distan
 
   if (val0 <= val1)
   {
-    return val0 + position * (val1 - val0)  / distance;
-  } else {
-    return val0 - position * (val0 - val1)  / distance;
+    return val0 + position * (val1 - val0) / distance;
   }
-  
+  else
+  {
+    return val0 - position * (val0 - val1) / distance;
+  }
 }
 
 void readCVs()
 {
   CV_curve = analogRead(0);
-  CV_curve0 = CV_curve >> 6; //
+  CV_curve0 = CV_curve >> CV_curve_shift; //
 
   CV_subSteps = analogRead(1);
 }
 
 uint32_t readWrite(uint32_t actualVal)
 {
-  // Set_DAC_4921(actualVal);
+  Set_DAC_4921(actualVal);
   readCVs();
   return actualVal;
 }
 
 uint32_t risingPhase()
 {
-  for (size_t i = 0; i < TIME; i++)
+  for (uint32_t i = 0; i < TIME; i++)
   {
+    if (firstLoop == true)
+    {
+      Serial.print(i);
+      Serial.print("   ");
+      Serial.print(CV_curve0);
+      Serial.print("   ");
+      Serial.println(pgm_read_word(&(LUT[CV_curve0][i])));
+    }
     if (CV_subSteps == 0)
     {
-      readWrite(uint32_t(LUT[CV_curve0][i]));
+      readWrite(uint32_t(pgm_read_word(&(LUT[CV_curve0][i]))));
     }
     else
     {
-      for (size_t pos = 0; pos < CV_subSteps; pos++)
+      for (uint32_t pos = 0; pos < CV_subSteps; pos++)
       {
         int v0, v1;
         if (i == TIME - 1) // show last value only once!
         {
-          readWrite(int(LUT[CV_curve0][i]));
+          readWrite(int(pgm_read_word(&(LUT[CV_curve0][i]))));
           break;
         }
         else
         {
-          v0 = int(LUT[CV_curve0][i]);
-          v1 = int(LUT[CV_curve0][i + 1]);
+          v0 = int(pgm_read_word(&(LUT[CV_curve0][i])));
+          v1 = int(pgm_read_word(&(LUT[CV_curve0][i + 1])));
           readWrite(interp(v0, v1, pos, CV_subSteps));
         }
       }
@@ -140,26 +154,26 @@ uint32_t risingPhase()
 uint32_t fallingPhase(uint32_t startVal, uint32_t stopVal, uint32_t curve, uint32_t subSteps)
 {
   float scalingFactor = (float(startVal - stopVal) / float(MAX + 1));
-  for (size_t i = 0; i < TIME; i++)
+  for (uint32_t i = 0; i < TIME; i++)
   {
     if (subSteps == 0)
     {
-      readWrite(startVal - uint32_t(scalingFactor * LUT[curve][i]));
+      readWrite(startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[curve][i]))));
     }
     else
     {
-      for (size_t pos = 0; pos < subSteps; pos++)
+      for (uint32_t pos = 0; pos < subSteps; pos++)
       {
         int v0, v1;
         if (i == TIME - 1) // show last value only once!
         {
-          readWrite(startVal - uint32_t(scalingFactor * LUT[curve][i]));
+          readWrite(startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[curve][i]))));
           break;
         }
         else
         {
-          v0 = startVal - uint32_t(scalingFactor * LUT[curve][i]);
-          v1 = startVal - uint32_t(scalingFactor * LUT[curve][(i + 1)]);
+          v0 = startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[curve][i])));
+          v1 = startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[curve][(i + 1)])));
           readWrite(interp(v0, v1, pos, subSteps));
         }
       }
