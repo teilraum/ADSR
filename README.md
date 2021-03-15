@@ -1,2 +1,2 @@
 # ADSR
-LUT based ADSR
+LUT based ADSR hosted on an Arduino nano
