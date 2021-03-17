@@ -204,7 +204,7 @@ F 3 "http://ww1.microchip.com/downloads/en/devicedoc/21897a.pdf" H 8600 4450 50 
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8500 3950 8500 4050
+	8500 3950 8500 4000
 $Comp
 L power:+5V #PWR062
 U 1 1 60539455
@@ -2351,8 +2351,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm1117.pdf" H 3900 2100 50  0001 C CNN
 	1    3900 2100
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4200 2100 4350 2100
 $Comp
 L power:+5V #PWR083
 U 1 1 6077B82E
@@ -2377,20 +2375,6 @@ F 3 "~" H 3350 2250 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3350 2100 3600 2100
-$Comp
-L Device:C c1
-U 1 1 6077CFBB
-P 4350 2250
-F 0 "c1" H 4465 2296 50  0000 L CNN
-F 1 "47u" H 4465 2205 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 4388 2100 50  0001 C CNN
-F 3 "~" H 4350 2250 50  0001 C CNN
-	1    4350 2250
-	1    0    0    -1  
-$EndComp
-Connection ~ 4350 2100
-Wire Wire Line
-	4350 2100 4700 2100
 $Comp
 L Device:C c2
 U 1 1 6077D4FD
@@ -2639,4 +2623,72 @@ F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 4000 50  0001 C CNN
 	1    2850 3800
 	1    0    0    1   
 $EndComp
+$Comp
+L Device:C c8
+U 1 1 6075567B
+P 6450 3550
+F 0 "c8" H 6565 3596 50  0000 L CNN
+F 1 "100n" H 6565 3505 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 6488 3400 50  0001 C CNN
+F 3 "~" H 6450 3550 50  0001 C CNN
+	1    6450 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C c9
+U 1 1 607578C6
+P 8350 3850
+F 0 "c9" H 8465 3896 50  0000 L CNN
+F 1 "100n" H 8465 3805 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 8388 3700 50  0001 C CNN
+F 3 "~" H 8350 3850 50  0001 C CNN
+	1    8350 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6450 3700 6750 3700
+Connection ~ 6750 3700
+Wire Wire Line
+	8350 4000 8500 4000
+Connection ~ 8500 4000
+Wire Wire Line
+	8500 4000 8500 4050
+$Comp
+L power:GND #PWR086
+U 1 1 6077B10C
+P 8350 3700
+F 0 "#PWR086" H 8350 3450 50  0001 C CNN
+F 1 "GND" H 8355 3527 50  0000 C CNN
+F 2 "" H 8350 3700 50  0001 C CNN
+F 3 "" H 8350 3700 50  0001 C CNN
+	1    8350 3700
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR085
+U 1 1 6077B39F
+P 6450 3400
+F 0 "#PWR085" H 6450 3150 50  0001 C CNN
+F 1 "GND" H 6455 3227 50  0000 C CNN
+F 2 "" H 6450 3400 50  0001 C CNN
+F 3 "" H 6450 3400 50  0001 C CNN
+	1    6450 3400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4200 2100 4350 2100
+$Comp
+L Device:C c1
+U 1 1 607B67B0
+P 4350 2250
+F 0 "c1" H 4465 2296 50  0000 L CNN
+F 1 "100n" H 4465 2205 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 4388 2100 50  0001 C CNN
+F 3 "~" H 4350 2250 50  0001 C CNN
+	1    4350 2250
+	1    0    0    -1  
+$EndComp
+Connection ~ 4350 2100
+Wire Wire Line
+	4350 2100 4700 2100
 $EndSCHEMATC
