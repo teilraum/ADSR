@@ -5,6 +5,7 @@
 
 #include "avr/pgmspace.h"
 #include "LUT.h"
+#include "math.h"
 
 // #############################################################
 // DAC stuff. might change:
@@ -64,22 +65,28 @@ void setup()
   Set_DAC_4921(0);
   pinMode(10, OUTPUT);
 
-  Serial.begin(9600);
+  // Serial.begin(9600);
 }
 
 bool firstLoop = true;
+const float coeff = 2 * M_PI/16;
 void loop()
 {
+  // for (int i = 0; i < 16; i++)
+  // {
+  //   Set_DAC_4921(2048+2047*sin(coeff * i));
+  // }
+
   Set_DAC_4921(0);
   digitalWrite(10, HIGH);
   delay(1);
   digitalWrite(10, LOW);
 
   risingPhase();
-  fallingPhase(MAX, 2048, CV_curve0, CV_subSteps);
-  fallingPhase(2048, 0, CV_curve0, CV_subSteps);
+  fallingPhase(MAX, 2048, &CV_curve0, &CV_subSteps);
+  fallingPhase(2048, 0, &CV_curve0, &CV_subSteps);
 
-  firstLoop = false;
+  // // firstLoop = false;
 }
 
 uint32_t interp(uint32_t val0, uint32_t val1, uint32_t position, uint32_t distance)
@@ -109,7 +116,9 @@ void readCVs()
 
 uint32_t readWrite(uint32_t actualVal)
 {
+  // digitalWrite(10, LOW);
   Set_DAC_4921(actualVal);
+  // digitalWrite(10, HIGH);
   readCVs();
   return actualVal;
 }
@@ -118,14 +127,14 @@ uint32_t risingPhase()
 {
   for (uint32_t i = 0; i < TIME; i++)
   {
-    if (firstLoop == true)
-    {
-      Serial.print(i);
-      Serial.print("   ");
-      Serial.print(CV_curve0);
-      Serial.print("   ");
-      Serial.println(pgm_read_word(&(LUT[CV_curve0][i])));
-    }
+    // if (firstLoop == true)
+    // {
+    //   Serial.print(i);
+    //   Serial.print("   ");
+    //   Serial.print(CV_curve0);
+    //   Serial.print("   ");
+    //   Serial.println(pgm_read_word(&(LUT[CV_curve0][i])));
+    // }
     if (CV_subSteps == 0)
     {
       readWrite(uint32_t(pgm_read_word(&(LUT[CV_curve0][i]))));
@@ -151,30 +160,30 @@ uint32_t risingPhase()
   }
 }
 
-uint32_t fallingPhase(uint32_t startVal, uint32_t stopVal, uint32_t curve, uint32_t subSteps)
+uint32_t fallingPhase(uint32_t startVal, uint32_t stopVal, int *curvePtr, int *subStepsPtr)
 {
   float scalingFactor = (float(startVal - stopVal) / float(MAX + 1));
   for (uint32_t i = 0; i < TIME; i++)
   {
-    if (subSteps == 0)
+    if (*subStepsPtr == 0)
     {
-      readWrite(startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[curve][i]))));
+      readWrite(startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[*curvePtr][i]))));
     }
     else
     {
-      for (uint32_t pos = 0; pos < subSteps; pos++)
+      for (uint32_t pos = 0; pos < *subStepsPtr; pos++)
       {
         int v0, v1;
         if (i == TIME - 1) // show last value only once!
         {
-          readWrite(startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[curve][i]))));
+          readWrite(startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[*curvePtr][i]))));
           break;
         }
         else
         {
-          v0 = startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[curve][i])));
-          v1 = startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[curve][(i + 1)])));
-          readWrite(interp(v0, v1, pos, subSteps));
+          v0 = startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[*curvePtr][i])));
+          v1 = startVal - uint32_t(scalingFactor * pgm_read_word(&(LUT[*curvePtr][(i + 1)])));
+          readWrite(interp(v0, v1, pos, *subStepsPtr));
         }
       }
     }
