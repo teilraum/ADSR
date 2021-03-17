@@ -47,17 +47,6 @@ F 3 "" H 8500 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Amplifier_Operational:TLV9004xRUCR U1
-U 5 1 604AFDBC
-P 1150 1100
-F 0 "U1" H 1108 1146 50  0000 L CNN
-F 1 "TLV9004xRUCR" H 1108 1055 50  0000 L CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 1150 1100 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 1200 1300 50  0001 C CNN
-	5    1150 1100
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+5V #PWR09
 U 1 1 604B15EE
 P 1050 750
@@ -107,10 +96,10 @@ F 3 "" H 6950 5750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C1
+L Device:C c3
 U 1 1 604E8A0D
 P 650 1100
-F 0 "C1" H 765 1146 50  0000 L CNN
+F 0 "c3" H 765 1146 50  0000 L CNN
 F 1 "100n" H 765 1055 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 688 950 50  0001 C CNN
 F 3 "~" H 650 1100 50  0001 C CNN
@@ -123,14 +112,12 @@ Wire Wire Line
 	650  800  650  950 
 Wire Wire Line
 	1050 750  1050 800 
-Connection ~ 1050 800 
 Wire Wire Line
 	1050 1450 1050 1400
 Wire Wire Line
 	1050 1400 650  1400
 Wire Wire Line
 	650  1400 650  1250
-Connection ~ 1050 1400
 $Comp
 L Diode:1N53xxB D3
 U 1 1 604F1EF7
@@ -241,10 +228,10 @@ F 3 "~" H 9450 4450 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:C C4
+L Device:C c7
 U 1 1 6053A73E
 P 9650 4650
-F 0 "C4" H 9765 4696 50  0000 L CNN
+F 0 "c7" H 9765 4696 50  0000 L CNN
 F 1 "10n" H 9500 4550 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 9688 4500 50  0001 C CNN
 F 3 "~" H 9650 4650 50  0001 C CNN
@@ -401,17 +388,6 @@ F 3 "~" H 1850 3300 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L Amplifier_Operational:TLV9004xRUCR U1
-U 1 1 604AB2CC
-P 2850 3800
-F 0 "U1" H 2850 4167 50  0000 C CNN
-F 1 "TLV9004xRUCR" H 2850 4076 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 3800 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 4000 50  0001 C CNN
-	1    2850 3800
-	1    0    0    1   
-$EndComp
-$Comp
 L Device:R R1
 U 1 1 605E8D0C
 P 2200 3700
@@ -521,7 +497,6 @@ Text Notes 400  3700 0    50   ~ 0
 [-10; 10] V
 Wire Wire Line
 	3150 3800 3250 3800
-Connection ~ 3150 3800
 $Comp
 L Connector:AudioJack2_SwitchT CV_D1
 U 1 1 6061E82A
@@ -554,17 +529,6 @@ F 2 "Potentiometer_THT:Potentiometer_Alps_RK09L_Single_Vertical" H 1850 4450 50 
 F 3 "~" H 1850 4450 50  0001 C CNN
 	1    1850 4450
 	0    -1   1    0   
-$EndComp
-$Comp
-L Amplifier_Operational:TLV9004xRUCR U1
-U 2 1 6061E83C
-P 2850 4950
-F 0 "U1" H 2850 5317 50  0000 C CNN
-F 1 "TLV9004xRUCR" H 2850 5226 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 4950 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 5150 50  0001 C CNN
-	2    2850 4950
-	1    0    0    1   
 $EndComp
 $Comp
 L Device:R R3
@@ -676,7 +640,6 @@ Text Notes 400  4850 0    50   ~ 0
 [-10; 10] V
 Wire Wire Line
 	3150 4950 3250 4950
-Connection ~ 3150 4950
 $Comp
 L Connector:AudioJack2_SwitchT CV_S1
 U 1 1 606264DE
@@ -709,17 +672,6 @@ F 2 "Potentiometer_THT:Potentiometer_Alps_RK09L_Single_Vertical" H 1850 5600 50 
 F 3 "~" H 1850 5600 50  0001 C CNN
 	1    1850 5600
 	0    -1   1    0   
-$EndComp
-$Comp
-L Amplifier_Operational:TLV9004xRUCR U1
-U 3 1 606264F0
-P 2850 6100
-F 0 "U1" H 2850 6467 50  0000 C CNN
-F 1 "TLV9004xRUCR" H 2850 6376 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 6100 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 6300 50  0001 C CNN
-	3    2850 6100
-	1    0    0    1   
 $EndComp
 $Comp
 L Device:R R5
@@ -831,7 +783,6 @@ Text Notes 400  6000 0    50   ~ 0
 [-10; 10] V
 Wire Wire Line
 	3150 6100 3250 6100
-Connection ~ 3150 6100
 $Comp
 L Connector:AudioJack2_SwitchT CV_R1
 U 1 1 6062D937
@@ -864,17 +815,6 @@ F 2 "Potentiometer_THT:Potentiometer_Alps_RK09L_Single_Vertical" H 1850 6800 50 
 F 3 "~" H 1850 6800 50  0001 C CNN
 	1    1850 6800
 	0    -1   1    0   
-$EndComp
-$Comp
-L Amplifier_Operational:TLV9004xRUCR U1
-U 4 1 6062D949
-P 2850 7300
-F 0 "U1" H 2850 7667 50  0000 C CNN
-F 1 "TLV9004xRUCR" H 2850 7576 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 7300 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 7500 50  0001 C CNN
-	4    2850 7300
-	1    0    0    1   
 $EndComp
 $Comp
 L Device:R R7
@@ -986,7 +926,6 @@ Text Notes 400  7200 0    50   ~ 0
 [-10; 10] V
 Wire Wire Line
 	3150 7300 3250 7300
-Connection ~ 3150 7300
 Text Label 3250 3800 0    50   ~ 0
 A
 Text Label 3250 4950 0    50   ~ 0
@@ -1372,17 +1311,6 @@ F 3 "" H 3550 3350 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Amplifier_Operational:TLV9004xRUCR U3
-U 1 1 6085EC4A
-P 5800 3800
-F 0 "U3" H 5800 4167 50  0000 C CNN
-F 1 "TLV9004xRUCR" H 5800 4076 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5800 3800 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 5850 4000 50  0001 C CNN
-	1    5800 3800
-	1    0    0    1   
-$EndComp
-$Comp
 L Device:R R15
 U 1 1 6085EC50
 P 5150 3700
@@ -1492,7 +1420,6 @@ Text Notes 3350 3700 0    50   ~ 0
 [-10; 10] V
 Wire Wire Line
 	6100 3800 6200 3800
-Connection ~ 6100 3800
 $Comp
 L Connector:AudioJack2_SwitchT CV_cD1
 U 1 1 6085EC98
@@ -1503,17 +1430,6 @@ F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 355
 F 3 "" H 3550 4500 50  0000 C CNN
 	1    3550 4500
 	1    0    0    -1  
-$EndComp
-$Comp
-L Amplifier_Operational:TLV9004xRUCR U3
-U 2 1 6085ECAA
-P 5800 4950
-F 0 "U3" H 5800 5317 50  0000 C CNN
-F 1 "TLV9004xRUCR" H 5800 5226 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5800 4950 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 5850 5150 50  0001 C CNN
-	2    5800 4950
-	1    0    0    1   
 $EndComp
 $Comp
 L Device:R R17
@@ -1612,7 +1528,6 @@ Text Notes 3350 4850 0    50   ~ 0
 [-10; 10] V
 Wire Wire Line
 	6100 4950 6200 4950
-Connection ~ 6100 4950
 $Comp
 L Connector:AudioJack2_SwitchT CV_cS1
 U 1 1 6085ECF8
@@ -1623,17 +1538,6 @@ F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 355
 F 3 "" H 3550 5650 50  0000 C CNN
 	1    3550 5650
 	1    0    0    -1  
-$EndComp
-$Comp
-L Amplifier_Operational:TLV9004xRUCR U3
-U 3 1 6085ED0A
-P 5800 6100
-F 0 "U3" H 5800 6467 50  0000 C CNN
-F 1 "TLV9004xRUCR" H 5800 6376 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5800 6100 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 5850 6300 50  0001 C CNN
-	3    5800 6100
-	1    0    0    1   
 $EndComp
 $Comp
 L Device:R R19
@@ -1745,7 +1649,6 @@ Text Notes 3350 6000 0    50   ~ 0
 [-10; 10] V
 Wire Wire Line
 	6100 6100 6200 6100
-Connection ~ 6100 6100
 $Comp
 L Connector:AudioJack2_SwitchT CV_cR1
 U 1 1 6085ED58
@@ -1756,17 +1659,6 @@ F 2 "Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles" H 355
 F 3 "" H 3550 6850 50  0000 C CNN
 	1    3550 6850
 	1    0    0    -1  
-$EndComp
-$Comp
-L Amplifier_Operational:TLV9004xRUCR U3
-U 4 1 6085ED6A
-P 5800 7300
-F 0 "U3" H 5800 7667 50  0000 C CNN
-F 1 "TLV9004xRUCR" H 5800 7576 50  0000 C CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5800 7300 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 5850 7500 50  0001 C CNN
-	4    5800 7300
-	1    0    0    1   
 $EndComp
 $Comp
 L Device:R R21
@@ -1878,7 +1770,6 @@ Text Notes 3350 7200 0    50   ~ 0
 [-10; 10] V
 Wire Wire Line
 	6100 7300 6200 7300
-Connection ~ 6100 7300
 Text Label 6200 3800 0    50   ~ 0
 cA
 Text Label 6200 4950 0    50   ~ 0
@@ -1904,17 +1795,6 @@ cS
 Text Label 6350 5450 0    50   ~ 0
 cR
 $Comp
-L Amplifier_Operational:TLV9004xRUCR U3
-U 5 1 608B76EE
-P 1850 1100
-F 0 "U3" H 1808 1146 50  0000 L CNN
-F 1 "TLV9004xRUCR" H 1808 1055 50  0000 L CNN
-F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 1850 1100 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 1900 1300 50  0001 C CNN
-	5    1850 1100
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+5V #PWR021
 U 1 1 608B76F4
 P 1750 750
@@ -1926,10 +1806,10 @@ F 3 "" H 1750 750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C3
+L Device:C c5
 U 1 1 608B76FA
 P 1350 1100
-F 0 "C3" H 1465 1146 50  0000 L CNN
+F 0 "c5" H 1465 1146 50  0000 L CNN
 F 1 "100n" H 1465 1055 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1388 950 50  0001 C CNN
 F 3 "~" H 1350 1100 50  0001 C CNN
@@ -1942,14 +1822,12 @@ Wire Wire Line
 	1350 800  1350 950 
 Wire Wire Line
 	1750 750  1750 800 
-Connection ~ 1750 800 
 Wire Wire Line
 	1750 1450 1750 1400
 Wire Wire Line
 	1750 1400 1350 1400
 Wire Wire Line
 	1350 1400 1350 1250
-Connection ~ 1750 1400
 $Comp
 L power:GND #PWR022
 U 1 1 608B7708
@@ -1973,10 +1851,10 @@ F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 1200 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C2
+L Device:C c4
 U 1 1 608C8F8B
 P 800 2300
-F 0 "C2" H 915 2346 50  0000 L CNN
+F 0 "c4" H 915 2346 50  0000 L CNN
 F 1 "100n" H 915 2255 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 838 2150 50  0001 C CNN
 F 3 "~" H 800 2300 50  0001 C CNN
@@ -2380,12 +2258,12 @@ Wire Wire Line
 	9800 2700 9850 2700
 Connection ~ 9850 2700
 $Comp
-L Connector_Generic:Conn_02x05_Counter_Clockwise J1
+L Connector_Generic:Conn_02x05_Odd_Even J1
 U 1 1 60671B12
 P 2500 2300
 F 0 "J1" H 2550 2717 50  0000 C CNN
 F 1 "Conn_02x05_Counter_Clockwise" H 2550 2626 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_2x05_P2.54mm_Vertical" H 2500 2300 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" H 2500 2300 50  0001 C CNN
 F 3 "~" H 2500 2300 50  0001 C CNN
 	1    2500 2300
 	1    0    0    -1  
@@ -2393,28 +2271,14 @@ $EndComp
 Wire Wire Line
 	2200 2100 2300 2100
 Wire Wire Line
-	2300 2100 2800 2100
-Connection ~ 2300 2100
-Wire Wire Line
 	2200 2300 2300 2300
 Wire Wire Line
 	2300 2300 2300 2200
 Connection ~ 2300 2300
 Wire Wire Line
-	2300 2200 2800 2200
-Connection ~ 2300 2200
-Wire Wire Line
-	2300 2300 2800 2300
-Wire Wire Line
-	2300 2400 2800 2400
-Wire Wire Line
 	2300 2400 2300 2300
-Connection ~ 2300 2400
 Wire Wire Line
 	2200 2500 2300 2500
-Wire Wire Line
-	2300 2500 2800 2500
-Connection ~ 2300 2500
 $Comp
 L power:+12V #PWR076
 U 1 1 6072175B
@@ -2488,9 +2352,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm1117.pdf" H 3900 2100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2800 2100 3350 2100
-Connection ~ 2800 2100
-Wire Wire Line
 	4200 2100 4350 2100
 $Comp
 L power:+5V #PWR083
@@ -2504,17 +2365,16 @@ F 3 "" H 4800 2100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C5
+L Device:C c6
 U 1 1 6077CA68
 P 3350 2250
-F 0 "C5" H 3465 2296 50  0000 L CNN
+F 0 "c6" H 3465 2296 50  0000 L CNN
 F 1 "47u" H 3465 2205 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 3388 2100 50  0001 C CNN
 F 3 "~" H 3350 2250 50  0001 C CNN
 	1    3350 2250
 	1    0    0    -1  
 $EndComp
-Connection ~ 3350 2100
 Wire Wire Line
 	3350 2100 3600 2100
 $Comp
@@ -2611,4 +2471,172 @@ Text Notes 5050 250  0    50   ~ 0
 POWER
 Text Notes 6050 2850 0    50   ~ 0
 INPUT
+Wire Wire Line
+	2800 2400 2800 2300
+Wire Wire Line
+	2800 2300 2800 2200
+Connection ~ 2800 2300
+Wire Wire Line
+	2300 2100 2300 2000
+Wire Wire Line
+	2300 2000 2800 2000
+Wire Wire Line
+	2800 2000 2800 2100
+Connection ~ 2300 2100
+Wire Wire Line
+	2300 2500 2300 2600
+Wire Wire Line
+	2300 2600 2800 2600
+Wire Wire Line
+	2800 2600 2800 2500
+Connection ~ 2300 2500
+Wire Wire Line
+	2800 2300 2900 2300
+$Comp
+L power:GND #PWR0101
+U 1 1 60594C1D
+P 2900 2300
+F 0 "#PWR0101" H 2900 2050 50  0001 C CNN
+F 1 "GND" V 2905 2172 50  0000 R CNN
+F 2 "" H 2900 2300 50  0001 C CNN
+F 3 "" H 2900 2300 50  0001 C CNN
+	1    2900 2300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3350 2100 3250 2100
+Connection ~ 3350 2100
+$Comp
+L power:+12V #PWR0102
+U 1 1 605A7D4B
+P 3250 2100
+F 0 "#PWR0102" H 3250 1950 50  0001 C CNN
+F 1 "+12V" H 3265 2273 50  0000 C CNN
+F 2 "" H 3250 2100 50  0001 C CNN
+F 3 "" H 3250 2100 50  0001 C CNN
+	1    3250 2100
+	1    0    0    -1  
+$EndComp
+Connection ~ 1750 800 
+Connection ~ 1750 1400
+Connection ~ 1050 800 
+Connection ~ 1050 1400
+$Comp
+L ADSR:TLV9004xSOIC U3
+U 5 1 608B76EE
+P 1850 1100
+F 0 "U3" H 1808 1146 50  0000 L CNN
+F 1 "TLV9004" H 1808 1055 50  0001 L CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 1850 1100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 1900 1300 50  0001 C CNN
+	5    1850 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L ADSR:TLV9004xSOIC U1
+U 5 1 604AFDBC
+P 1150 1100
+F 0 "U1" H 1108 1146 50  0000 L CNN
+F 1 "TLV9004" H 1108 1055 50  0001 L CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 1150 1100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 1200 1300 50  0001 C CNN
+	5    1150 1100
+	1    0    0    -1  
+$EndComp
+Connection ~ 6100 3800
+$Comp
+L ADSR:TLV9004xSOIC U3
+U 1 1 6085EC4A
+P 5800 3800
+F 0 "U3" H 5800 4167 50  0000 C CNN
+F 1 "TLV9004" H 5800 4076 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5800 3800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 5850 4000 50  0001 C CNN
+	1    5800 3800
+	1    0    0    1   
+$EndComp
+Connection ~ 6100 4950
+$Comp
+L ADSR:TLV9004xSOIC U3
+U 2 1 6085ECAA
+P 5800 4950
+F 0 "U3" H 5800 5317 50  0000 C CNN
+F 1 "TLV9004" H 5800 5226 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5800 4950 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 5850 5150 50  0001 C CNN
+	2    5800 4950
+	1    0    0    1   
+$EndComp
+Connection ~ 6100 6100
+$Comp
+L ADSR:TLV9004xSOIC U3
+U 3 1 6085ED0A
+P 5800 6100
+F 0 "U3" H 5800 6467 50  0000 C CNN
+F 1 "TLV9004" H 5800 6376 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5800 6100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 5850 6300 50  0001 C CNN
+	3    5800 6100
+	1    0    0    1   
+$EndComp
+Connection ~ 6100 7300
+$Comp
+L ADSR:TLV9004xSOIC U3
+U 4 1 6085ED6A
+P 5800 7300
+F 0 "U3" H 5800 7667 50  0000 C CNN
+F 1 "TLV9004" H 5800 7576 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5800 7300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 5850 7500 50  0001 C CNN
+	4    5800 7300
+	1    0    0    1   
+$EndComp
+Connection ~ 3150 7300
+$Comp
+L ADSR:TLV9004xSOIC U1
+U 4 1 6062D949
+P 2850 7300
+F 0 "U1" H 2850 7667 50  0000 C CNN
+F 1 "TLV9004" H 2850 7576 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 7300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 7500 50  0001 C CNN
+	4    2850 7300
+	1    0    0    1   
+$EndComp
+Connection ~ 3150 6100
+$Comp
+L ADSR:TLV9004xSOIC U1
+U 3 1 606264F0
+P 2850 6100
+F 0 "U1" H 2850 6467 50  0000 C CNN
+F 1 "TLV9004" H 2850 6376 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 6100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 6300 50  0001 C CNN
+	3    2850 6100
+	1    0    0    1   
+$EndComp
+Connection ~ 3150 4950
+$Comp
+L ADSR:TLV9004xSOIC U1
+U 2 1 6061E83C
+P 2850 4950
+F 0 "U1" H 2850 5317 50  0000 C CNN
+F 1 "TLV9004" H 2850 5226 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 4950 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 5150 50  0001 C CNN
+	2    2850 4950
+	1    0    0    1   
+$EndComp
+Connection ~ 3150 3800
+$Comp
+L ADSR:TLV9004xSOIC U1
+U 1 1 604AB2CC
+P 2850 3800
+F 0 "U1" H 2850 4167 50  0000 C CNN
+F 1 "TLV9004" H 2850 4076 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2850 3800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlv9004.pdf" H 2900 4000 50  0001 C CNN
+	1    2850 3800
+	1    0    0    1   
+$EndComp
 $EndSCHEMATC
